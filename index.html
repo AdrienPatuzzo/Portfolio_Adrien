@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio sur le thème de fallout et matrix">
+    <meta name="og:url" content="https://wwwliendemonsite.com/mapage">
+    <meta name="og:image" content="https://liendemonsite.com/capturedecran.jpg">
+    <meta name="og:type" content="website">
+    <meta name="author" content="Patuzzo ADRIEN">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-section logo">
+            <img src="Prototype_logo.png" alt="Logo">
+        </div>
+        <div class="header-section home">
+            <a href="#">Home</a>
+        </div>
+        <div class="header-section search">
+            <input type="text" placeholder="Recherche...">
+        </div>
+        <div class="header-section astronaut">
+            <span class="icon">👨‍🚀</span>
+        </div>
+        <div class="header-section menu">
+            <div class="menu-icon" id="menu-toggle">
+                <div class="menu-bar"></div>
+                <div class="menu-bar"></div>
+                <div class="menu-bar"></div>
+            </div>
+            <div class="menu-content">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Skills</a>
+                <a href="#">Work</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Hobby</a>
+                <a href="#">Sign Up/Login</a>
+                <a href="#">Contact</a>
+                <a href="#">Languages</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <canvas id="galaxyCanvas"></canvas>
+        <div class="planet-container">
+            <!-- Les planètes seront générées par JavaScript -->
+        </div>
+    </main>
+    <footer>
+        <p class="footer-text">© 2024 Made by <a href="https://github.com/AdrienPatuzzo">Patuzzo Adrien .</a> Tous
+            droits réservés.</p>
+    </footer>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title">Titre de la Planète</h2>
+            <p id="modal-description">Description ici...</p>
+            <a href="#" id="expand-link">Voir plus de détails</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
