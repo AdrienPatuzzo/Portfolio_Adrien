@@ -152,8 +152,6 @@ main {
     /* Cache le lien d'expansion par défaut */
     color: #00ff00;
     /* Utilise une couleur verte pour le lien d'expansion */
-    text-decoration: underline;
-    /* Souligne le lien pour indiquer son interactivité */
     cursor: pointer;
     /* Change le curseur pour indiquer que le lien est cliquable */
 }
