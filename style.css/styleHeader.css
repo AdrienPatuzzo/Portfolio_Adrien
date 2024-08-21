@@ -93,6 +93,32 @@ header {
     /* Accentue l'effet néon du logo lors du survol */
 }
 
+/* Style pour l'icône de recherche et le champ de recherche */
+.search-container {
+    position: relative;
+}
+
+/* Style pour le champ de recherche */
+.search-container input {
+    display: none;
+    /* Masqué par défaut */
+    padding: 5px 30px 5px 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    pointer-events: none;
+    /* Permet de cliquer sur le champ de recherche */
+}
+
 /* Styles pour l'icône d'astronaute */
 .astronaut .icon {
     font-size: 24px;
@@ -406,13 +432,45 @@ main {
         /* Réduit la taille du texte pour s'adapter aux écrans plus petits */
     }
 
-    .menu-content {
-        width: 100%;
-        /* Fait en sorte que le menu déroulant prenne toute la largeur de l'écran */
-    }
-
     .menu-bar {
         width: 25px;
         /* Réduit la largeur des barres du menu pour s'adapter aux petits écrans */
+    }
+
+    .auth-button {
+        display: none;
+        /* Masquer le bouton d'authentification sur les petits écrans */
+    }
+
+    .astronaut .icon {
+        display: inline-block;
+        /* Afficher l'icône d'astronaute sur les petits écrans */
+    }
+
+    .search-container input {
+        display: none;
+        /* Affiche le champ de recherche */
+    }
+
+    .search-icon {
+        display: inline-block;
+        /* Affiche l'icône de recherche sur les petits écrans*/
+    }
+}
+
+@media (min-width: 769px) {
+    .search-container input {
+        display: inline-block;
+        /* Affiche le champ de recherche */
+    }
+
+    .search-icon {
+        display: none;
+        /* Masque l'icône de recherche */
+    }
+
+    .astronaut .icon {
+        display: none;
+        /* Masquer l'icône d'astronaute sur les grands écrans */
     }
 }

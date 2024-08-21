@@ -11,7 +11,10 @@
     <meta name="author" content="Patuzzo ADRIEN">
     <meta name="robots" content="noindex, nofollow">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css/styleBody.css">
+    <link rel="stylesheet" href="style.css/styleHeader.css">
+    <link rel="stylesheet" href="style.css/styleMain.css">
+    <link rel="stylesheet" href="style.css/styleFooter.css">
     <script src="script.js" defer></script>
 </head>
 
@@ -24,10 +27,14 @@
             <a href="#">Home</a>
         </div>
         <div class="header-section search">
-            <input type="text" placeholder="Recherche...">
+            <div class="search-container">
+                <input type="text" placeholder="Recherche...">
+                <span class="search-icon">🔍</span>
+            </div>
         </div>
         <div class="header-section astronaut">
             <span class="icon">👨‍🚀</span>
+            <a href="#" class="auth-button">Connexion/Inscription</a>
         </div>
         <div class="header-section menu">
             <div class="menu-icon" id="menu-toggle">
@@ -54,10 +61,6 @@
             <!-- Les planètes sont générées par JavaScript -->
         </div>
     </main>
-    <footer>
-        <p class="footer-text">© 2024 Made by <a href="https://github.com/AdrienPatuzzo">Patuzzo Adrien .</a> Tous
-            droits réservés.</p>
-    </footer>
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
@@ -66,6 +69,10 @@
             <a href="#" id="expand-link">Voir plus de détails</a>
         </div>
     </div>
+    <footer>
+        <p class="footer-text">© 2024 Made by <a href="https://github.com/AdrienPatuzzo">Patuzzo Adrien .</a> Tous
+            droits réservés.</p>
+    </footer>
 </body>
 
 </html>

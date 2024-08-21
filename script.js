@@ -34,6 +34,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const menuToggle = document.getElementById('menu-toggle');
     const menuContent = document.querySelector('.menu-content');
+    const astronautIcon = document.querySelector('.astronaut .icon');
+    const authButton = document.querySelector('.auth-button');
+
+    // Fonction pour ajuster l'affichage de l'icône et du bouton d'authentification en fonction de la taille de l'écran
+    function adjustDisplay() {
+        if (window.innerWidth >= 768) {
+            astronautIcon.style.display = 'none'; // Masquer l'icône d'astronaute sur les grands écrans
+            authButton.style.display = 'inline-block'; // Afficher le bouton d'authentification sur les grands écrans
+        } else {
+            astronautIcon.style.display = 'inline-block'; // Afficher l'icône d'astronaute sur les petits écrans
+            authButton.style.display = 'none'; // Masquer le bouton d'authentification sur les petits écrans
+        }
+    }
+
+    // Ajuster l'affichage au chargement initial et lors du redimensionnement de la fenêtre
+    adjustDisplay();
+    window.addEventListener('resize', adjustDisplay);
 
     // Ajoute un écouteur d'événement pour basculer l'affichage du menu
     menuToggle.addEventListener('click', () => {
@@ -224,15 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Créer chaque planète à partir des données fournies
+    // Créer les planètes en utilisant les données fournies
     planetData.forEach(data => createPlanet(data));
-
-    // Désélectionner les planètes si on clique en dehors
-    document.addEventListener('click', function (event) {
-        if (!event.target.classList.contains('planet')) {
-            document.querySelectorAll('.planet').forEach(planet => {
-                planet.classList.remove('selected');
-            });
-        }
-    });
 });
