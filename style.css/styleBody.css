@@ -11,7 +11,7 @@ body {
     /* Définit un fond noir pour l'ensemble de la page */
     color: #00ff00;
     /* Définit la couleur du texte en vert fluo pour une bonne visibilité */
-    font-family: 'Arial', sans-serif;
+    font-family: 'courier', sans-serif;
     /* Utilise la police Arial par défaut, avec une alternative générique sans serif */
     height: 100vh;
     /* Définit la hauteur du body pour occuper toute la hauteur de la fenêtre */

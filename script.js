@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: 'LinkedIn', color: ['#d75050', '#a14040'], summary: "Résumé de LinkedIn", details: "Détails de LinkedIn : LinkedIn est la planète où...", redirect: "https://www.linkedin.com/in/adrien-patuzzo-b7180a194/" },
         { name: 'Hobby', color: ['#f0b430', '#d7a716'], summary: "Résumé de Hobby", details: "Détails de Hobby : Les hobbies sur cette planète..." },
         { name: 'Contact', color: ['#c1b600', '#9a8e00'], summary: "Résumé de Contact", details: "Détails de Contact : Pour nous contacter..." },
-        { name: 'Languages', color: ['#7c9ab3', '#5d7085'], summary: "En cours de développement", details: "Cette planète est encore en développement." }
     ];
     // Fonction pour créer et placer une planète dans le conteneur
     function createPlanet(data) {

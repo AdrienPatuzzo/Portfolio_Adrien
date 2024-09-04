@@ -1,10 +1,3 @@
-/* Réinitialisation des marges et paddings par défaut */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* Styles pour le canvas de la galaxie */
 main {
     flex: 1;
@@ -15,6 +8,17 @@ main {
     /* Cache tout débordement pour éviter que le canvas dépasse */
     max-width: 100vw;
     /* Limite la largeur maximale à la largeur de la fenêtre pour éviter les débordements horizontaux */
+}
+
+#myVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
 /* Styles pour l'élément canvas dans le main */
