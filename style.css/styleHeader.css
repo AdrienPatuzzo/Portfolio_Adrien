@@ -14,7 +14,7 @@ header {
     /* Bordure verte pour délimiter le header */
     align-items: center;
     /* Centre verticalement les éléments */
-    padding: 0 20px;
+    padding: 10px;
     /* Ajoute des espaces sur les côtés du header */
 }
 

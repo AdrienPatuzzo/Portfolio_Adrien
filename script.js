@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
             planet.classList.add('selected'); // Sélectionner la planète actuelle
 
             if (data.redirect) {
-                window.location.href = data.redirect; // Rediriger si c'est LinkedIn
+                window.open(data.redirect, '_blank'); // Rediriger si c'est LinkedIn
             } else {
                 openModal(data, planet); // Ouvrir la modale pour les autres planètes
             }
@@ -212,10 +212,14 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.left = `${left}px`; // Appliquer la nouvelle position horizontale
     }
 
-    // Fonction pour fermer la modale
+    // Fonction pour ouvrir et fermer la modale
+    function openModal() {
+        document.querySelector('.modal').style.display = 'block';
+        document.body.classList.add('no-scroll');
+    }
+
     function closeModal() {
-        const modal = document.getElementById('modal');
-        modal.style.display = 'none'; // Masquer la modale
-        modal.style.width = '40%'; // Réinitialiser la largeur de la modale
+        document.querySelector('.modal').style.display = 'none';
+        document.body.classList.remove('no-scroll');
     }
 });

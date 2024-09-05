@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 /* Styles pour le body */
 body {
     background-color: #000;
@@ -19,4 +23,8 @@ body {
     /* Utilise Flexbox pour faciliter l'agencement des éléments */
     flex-direction: column;
     /* Aligne les enfants du body verticalement */
+}
+
+.no-scroll {
+    overflow: hidden;
 }

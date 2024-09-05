@@ -125,7 +125,10 @@ main {
 
 /* Styles pour la modale */
 .modal {
-    position: absolute;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     /* Positionne la modale de manière absolue par rapport à son conteneur */
     background: #1a1a1a;
     /* Utilise un fond sombre pour la modale */
@@ -142,10 +145,13 @@ main {
     display: none;
     /* Cache la modale par défaut */
     width: 40%;
-    height: 20%;
-    /* Définit la largeur et la hauteur de la modale */
+    height: auto;
+    /* Ajuste la hauteur automatiquement */
+    max-height: 80vh;
+    /* Limite la hauteur maximale pour éviter le dépassement */
+    overflow: auto;
+    /* Ajoute un scroll si nécessaire */
     z-index: 100;
-    /* Assure que la modale est affichée au-dessus des autres éléments */
 }
 
 .modal h2 {
