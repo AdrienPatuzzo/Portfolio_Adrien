@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // --- Position fixe pour chaque planète ---
     const fixedPositions = [
-        { top: 155, left: 650 },
-        { top: 250, left: 1500 },
+        { top: 255, left: 350 },
+        { top: 250, left: 1200 },
         { top: 350, left: 700 },
         { top: 750, left: 1100 },
         { top: 600, left: 500 },
-        { top: 450, left: 1200 },
+        { top: 450, left: 1500 },
     ];
 
     // Créer chaque planète dans le conteneur avec une position fixe
