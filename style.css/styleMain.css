@@ -83,7 +83,7 @@ main {
     /* Assure que la planète a une hauteur minimale pour que le texte soit lisible */
     box-shadow: -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
     /* Ajoute une ombre intérieure et extérieure pour donner de la profondeur */
-    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPDFPjtsLJ2bSPDuBldjVUQlu3JkOBRbxng&s) 0/auto 100%;
+    /* background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPDFPjtsLJ2bSPDuBldjVUQlu3JkOBRbxng&s) 0/auto 100%; */
     /* Définit une image d'arrière-plan pour les planètes */
     animation: tournicoti 10s linear infinite;
     /* Applique une animation de défilement continu */
