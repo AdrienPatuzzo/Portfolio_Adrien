@@ -291,17 +291,6 @@ header {
     /* Distance de la droite */
 }
 
-/* Lien d'expansion caché par défaut */
-.modal #expand-link {
-    display: none;
-    color: #00ff00;
-    /* Lien vert */
-    text-decoration: underline;
-    /* Souligne pour indiquer que c'est un lien */
-    cursor: pointer;
-    /* Indique que c'est cliquable */
-}
-
 /* Responsive design pour les écrans de largeur maximale de 768px */
 @media (max-width: 768px) {
     .header-section {

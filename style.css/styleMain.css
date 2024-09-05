@@ -189,4 +189,5 @@ main {
     /* Utilise une couleur verte pour le lien d'expansion */
     cursor: pointer;
     /* Change le curseur pour indiquer que le lien est cliquable */
+    text-decoration: underline;
 }
