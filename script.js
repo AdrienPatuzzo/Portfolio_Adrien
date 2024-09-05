@@ -1,205 +1,221 @@
-// Ajout d'un écouteur d'événement pour s'assurer que le code s'exécute après le chargement complet de la page
+// Attendre que la page soit complètement chargée avant d'exécuter le code
 document.addEventListener("DOMContentLoaded", function () {
+    // --- Initialisation du canevas pour la galaxie ---
     const canvas = document.getElementById('galaxyCanvas');
     const ctx = canvas.getContext('2d');
-    // Fonction pour ajuster la taille du canevas en fonction de la taille de l'écran
+
+    // Ajuster la taille du canevas au chargement de la page et lors du redimensionnement de la fenêtre
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // --- Initialisation des éléments du menu ---
+    const menuToggle = document.getElementById('menu-toggle'); // Bouton pour ouvrir/fermer le menu
+    const menuContent = document.querySelector('.menu-content'); // Contenu du menu
+    const astronautIcon = document.querySelector('.astronaut .icon'); // Icône d'astronaute (pour petits écrans)
+    const authButton = document.querySelector('.auth-button'); // Bouton d'authentification (pour grands écrans)
+
+    // --- Initialisation du lecteur vidéo ---
+    const video = document.getElementById("myVideo");
+    video.playbackRate = 0.6; // Réduire la vitesse de lecture de la vidéo
+
+    // --- Initialisation des données des planètes ---
+    const planetContainer = document.querySelector('.planet-container');
+    const planetData = [
+        { name: 'About', summary: "Résumé d'About", details: "Détails d'About..." },
+        { name: 'Skills', summary: "Résumé de Skills", details: "Détails de Skills..." },
+        { name: 'Work', summary: "Résumé de Work", details: "Détails de Work..." },
+        { name: 'LinkedIn', summary: "Résumé de LinkedIn", details: "LinkedIn...", redirect: "https://www.linkedin.com" },
+        { name: 'Hobby', summary: "Résumé de Hobby", details: "Détails de Hobby..." },
+        { name: 'Contact', summary: "Résumé de Contact", details: "Détails de Contact..." },
+    ];
+
+    // Créer chaque planète dans le conteneur
+    planetData.forEach(data => createPlanet(data));
+
+    // --- Ajout des événements de redimensionnement et d'affichage ---
+    window.addEventListener('resize', adjustDisplay); // Ajuster l'affichage lorsque la fenêtre est redimensionnée
+    menuToggle.addEventListener('click', toggleMenu); // Basculer l'affichage du menu lors d'un clic
+    document.querySelector('.close-button').addEventListener('click', closeModal); // Fermer la modale lors du clic sur le bouton de fermeture
+    document.addEventListener('click', function (event) {
+        if (event.target === document.getElementById('modal')) {
+            closeModal(); // Fermer la modale si on clique en dehors de celle-ci
+        }
+    });
+
+    // Ajuster l'affichage des éléments (icône d'astronaute et bouton d'authentification) au chargement initial
+    adjustDisplay();
+
+    // --- Fonctions ---
+
+    // Fonction pour redimensionner le canevas en fonction de la taille de la fenêtre
     function resizeCanvas() {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
-        drawGalaxy();
+        drawGalaxy(); // Redessiner la galaxie après redimensionnement
     }
-    // Fonction pour dessiner la galaxie avec des étoiles aléatoires
+
+    // Fonction pour dessiner une galaxie avec des étoiles aléatoires
     function drawGalaxy() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Effacer le contenu actuel du canevas
         const numStars = 1000; // Nombre d'étoiles à dessiner
         for (let i = 0; i < numStars; i++) {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            const starSize = Math.random() * 1.5;
+            const x = Math.random() * canvas.width; // Position aléatoire en x
+            const y = Math.random() * canvas.height; // Position aléatoire en y
+            const starSize = Math.random() * 1.5; // Taille aléatoire de l'étoile
             ctx.beginPath();
             ctx.arc(x, y, starSize, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, ' + Math.random() + ')';
+            ctx.fillStyle = `rgba(255, 255, 255, ${Math.random()})`; // Couleur aléatoire avec transparence
             ctx.fill();
         }
     }
-    // Ajoute un écouteur d'événement pour redimensionner le canevas lorsque la fenêtre est redimensionnée
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuContent = document.querySelector('.menu-content');
-    const astronautIcon = document.querySelector('.astronaut .icon');
-    const authButton = document.querySelector('.auth-button');
-    // Fonction pour ajuster l'affichage de l'icône et du bouton d'authentification en fonction de la taille de l'écran
+
+    // Fonction pour ajuster l'affichage des éléments en fonction de la largeur de l'écran
     function adjustDisplay() {
         if (window.innerWidth >= 768) {
             astronautIcon.style.display = 'none'; // Masquer l'icône d'astronaute sur les grands écrans
-            authButton.style.display = 'inline-block'; // Afficher le bouton d'authentification sur les grands écrans
+            authButton.style.display = 'inline-block'; // Afficher le bouton d'authentification
         } else {
             astronautIcon.style.display = 'inline-block'; // Afficher l'icône d'astronaute sur les petits écrans
-            authButton.style.display = 'none'; // Masquer le bouton d'authentification sur les petits écrans
+            authButton.style.display = 'none'; // Masquer le bouton d'authentification
         }
     }
-    // Ajuster l'affichage au chargement initial et lors du redimensionnement de la fenêtre
-    adjustDisplay();
-    window.addEventListener('resize', adjustDisplay);
-    // Ajoute un écouteur d'événement pour basculer l'affichage du menu
-    menuToggle.addEventListener('click', () => {
+
+    // Fonction pour basculer l'affichage du menu
+    function toggleMenu() {
         menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
-    });
-    const planetContainer = document.querySelector('.planet-container');
-    // Tableau d'objets contenant des données sur chaque planète
-    const planetData = [
-        { name: 'About', color: ['#b6b6b6', '#8e8e8e'], summary: "Résumé d'About", details: "Détails d'About : Cette planète est fascinante car..." },
-        { name: 'Skills', color: ['#f5b742', '#d4a40d'], summary: "Résumé de Skills", details: "Détails de Skills : Cette planète représente..." },
-        { name: 'Work', color: ['#2b4d2e', '#1e3d1b'], summary: "Résumé de Work", details: "Détails de Work : Le travail ici est..." },
-        { name: 'LinkedIn', color: ['#d75050', '#a14040'], summary: "Résumé de LinkedIn", details: "Détails de LinkedIn : LinkedIn est la planète où...", redirect: "https://www.linkedin.com/in/adrien-patuzzo-b7180a194/" },
-        { name: 'Hobby', color: ['#f0b430', '#d7a716'], summary: "Résumé de Hobby", details: "Détails de Hobby : Les hobbies sur cette planète..." },
-        { name: 'Contact', color: ['#c1b600', '#9a8e00'], summary: "Résumé de Contact", details: "Détails de Contact : Pour nous contacter..." },
-    ];
-    // Fonction pour créer et placer une planète dans le conteneur
+    }
+
+    // Fonction pour créer et positionner une planète dans le conteneur
     function createPlanet(data) {
         const planet = document.createElement('div');
-        planet.className = 'planet';
-        planet.style.background = `radial-gradient(circle, ${data.color[0]}, ${data.color[1]})`;
-        planet.innerText = data.name;
+        planet.className = 'planet'; // Appliquer la classe CSS "planet"
+        planet.innerText = data.name; // Nom de la planète
+
+        // Obtenir la taille du texte pour ajuster la taille de la planète
         const textSize = getTextSize(data.name);
         let size = Math.max(textSize.width, textSize.height) + 20;
-        let top, left;
-        let overlaps = true;
-        let maxAttempts = 1000;
-        let attempts = 0;
-        // Essaye de positionner la planète sans chevauchement
+        let position = getPlanetPosition(size); // Positionner la planète de manière aléatoire sans chevauchement
+
+        // Appliquer la taille et la position à la planète
+        planet.style.width = `${size}px`;
+        planet.style.height = `${size}px`;
+        planet.style.top = `${position.top}px`;
+        planet.style.left = `${position.left}px`;
+        planet.style.transform = `translate(-50%, -50%)`; // Centrer la planète
+        planetContainer.appendChild(planet); // Ajouter la planète au conteneur
+
+        // Gérer le clic sur une planète
+        planet.addEventListener('click', function (event) {
+            event.stopPropagation(); // Empêcher la propagation du clic
+            document.querySelectorAll('.planet').forEach(p => p.classList.remove('selected')); // Désélectionner les autres planètes
+            planet.classList.add('selected'); // Sélectionner la planète actuelle
+
+            if (data.redirect) {
+                window.location.href = data.redirect; // Rediriger si c'est LinkedIn
+            } else {
+                openModal(data, planet); // Ouvrir la modale pour les autres planètes
+            }
+        });
+    }
+
+    // Fonction pour mesurer la taille du texte (largeur et hauteur)
+    function getTextSize(text) {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        context.font = 'bold 18px Courier'; // Police utilisée pour mesurer
+        const metrics = context.measureText(text);
+        return { width: metrics.width, height: 18 }; // Retourner les dimensions du texte
+    }
+
+    // Fonction pour obtenir une position aléatoire pour une planète sans chevauchement
+    function getPlanetPosition(size) {
+        let top, left, overlaps = true, attempts = 0;
+        const maxAttempts = 1000; // Limiter le nombre d'essais pour éviter des boucles infinies
+
         while (overlaps && attempts < maxAttempts) {
             overlaps = false;
             attempts++;
-            // Calcule des positions aléatoires
-            top = Math.random() * (planetContainer.clientHeight - size);
-            left = Math.random() * (planetContainer.clientWidth - size);
-            // Assure que la planète ne soit pas partiellement en dehors des bords
-            top = Math.max(top, size / 2);
-            left = Math.max(left, size / 2);
-            // Vérifie le chevauchement avec d'autres planètes
+            top = Math.random() * (planetContainer.clientHeight - size); // Position aléatoire en haut
+            left = Math.random() * (planetContainer.clientWidth - size); // Position aléatoire à gauche
+            top = Math.max(top, size / 2); // S'assurer que la planète ne dépasse pas le bord supérieur
+            left = Math.max(left, size / 2); // S'assurer que la planète ne dépasse pas le bord gauche
+
+            // Vérifier le chevauchement avec d'autres planètes
             for (const otherPlanet of planetContainer.children) {
                 const otherRect = otherPlanet.getBoundingClientRect();
                 const newRect = {
                     top: planetContainer.getBoundingClientRect().top + top,
                     left: planetContainer.getBoundingClientRect().left + left,
                     width: size,
-                    height: size
+                    height: size,
                 };
-                // Vérifie si les rectangles se chevauchent
-                if (
-                    !(newRect.left + newRect.width < otherRect.left ||
-                        newRect.left > otherRect.left + otherRect.width ||
-                        newRect.top + newRect.height < otherRect.top ||
-                        newRect.top > otherRect.top + otherRect.height)
-                ) {
-                    overlaps = true;
+                if (!(
+                    newRect.left + newRect.width < otherRect.left ||
+                    newRect.left > otherRect.left + otherRect.width ||
+                    newRect.top + newRect.height < otherRect.top ||
+                    newRect.top > otherRect.top + otherRect.height
+                )) {
+                    overlaps = true; // Chevauchement détecté, recommencer la position
                     break;
                 }
             }
         }
-        // Vérifie si le nombre maximum de tentatives est atteint
-        if (attempts >= maxAttempts) {
-            console.warn('Planet position could not be determined without overlap. Aborting.');
-            return;
-        }
-        // Définit les dimensions et la position de la planète 
-        planet.style.width = `${size}px`;
-        planet.style.height = `${size}px`;
-        planet.style.top = `${top}px`;
-        planet.style.left = `${left}px`;
-        planet.style.transform = `translate(-50%, -50%)`;
-        planetContainer.appendChild(planet);
-        // Ajoute un événement de clic pour chaque planète
-        planet.addEventListener('click', function (event) {
-            event.stopPropagation();
-            document.querySelectorAll('.planet').forEach(p => {
-                if (p !== planet) {
-                    p.classList.remove('selected');
-                }
-            });
-            planet.classList.add('selected');
-            if (data.redirect) {
-                window.location.href = data.redirect; // Redirige directement pour LinkedIn
-            } else {
-                openModal(data, planet);
-            }
-        });
+        return { top, left }; // Retourner la position calculée
     }
-    // Fonction pour mesurer la taille du texte afin d'ajuster la taille de la planète
-    function getTextSize(text) {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        context.font = 'bold 16px Arial';
-        const metrics = context.measureText(text);
-        return {
-            width: metrics.width,
-            height: 16
-        };
-    }
-    // Fonction pour ouvrir une modale avec les informations de la planète
+
+    // Fonction pour ouvrir la modale avec les informations de la planète
     function openModal(data, planet) {
         const modal = document.getElementById('modal');
         const modalTitle = document.getElementById('modal-title');
         const modalDescription = document.getElementById('modal-description');
         const expandLink = document.getElementById('expand-link');
-        modalTitle.textContent = data.name;
-        modalDescription.textContent = data.summary;
-        // Affiche le lien pour étendre la description seulement s'il y a des détails supplémentaires
-        expandLink.style.display = data.details ? 'block' : 'none'; // Afficher le lien seulement s'il y a des détails
-        // Ajoute un événement de clic pour le lien d'expansion
+
+        modalTitle.textContent = data.name; // Afficher le nom de la planète
+        modalDescription.textContent = data.summary; // Afficher le résumé de la planète
+        expandLink.style.display = data.details ? 'block' : 'none'; // Afficher ou masquer le lien "Expand" selon s'il y a des détails
+
+        // Gérer le clic sur "Expand" pour afficher plus de détails
         expandLink.onclick = function (event) {
             event.preventDefault();
             modalDescription.textContent = data.details; // Afficher les détails complets
-            modal.style.width = '80%'; // Agrandir la modale pour montrer plus de détails
-            adjustModalPosition(modal, planet);
+            modal.style.width = '80%'; // Agrandir la modale
+            adjustModalPosition(modal, planet); // Ajuster la position de la modale
         };
-        // Positionner la modale sous la planète cliquée
-        adjustModalPosition(modal, planet);
-        modal.style.display = 'block';
+
+        adjustModalPosition(modal, planet); // Ajuster la position initiale de la modale
+        modal.style.display = 'block'; // Afficher la modale
     }
-    // Fonction pour ajuster la position de la modale sur l'écran
+
+    // Fonction pour ajuster la position de la modale par rapport à la planète cliquée
     function adjustModalPosition(modal, planet) {
         const planetRect = planet.getBoundingClientRect();
         const containerRect = planetContainer.getBoundingClientRect();
         const modalRect = modal.getBoundingClientRect();
         const mainRect = document.querySelector('main').getBoundingClientRect();
-        // Calcule la position de la modale par rapport à la planète cliquée 
+
+        // Calculer la position en fonction de la planète cliquée
         let top = planetRect.bottom + window.scrollY;
         let left = planetRect.left - containerRect.left + window.scrollX;
-        // Centre la modale horizontalement par rapport à la planète
         left = planetRect.left - containerRect.left + (planetRect.width / 2) - (modalRect.width / 2);
-        // Ajuster si la modale dépasse la bordure droite du conteneur
+
+        // Ajuster si la modale dépasse la largeur ou hauteur de l'écran
         if (left + modalRect.width > containerRect.width + containerRect.left) {
             left = containerRect.width + containerRect.left - modalRect.width;
         }
-        // Ajuste la position si la modale dépasse la bordure inférieure de l'élément principal
         if (top + modalRect.height > mainRect.bottom + window.scrollY) {
-            top = planetRect.top + window.scrollY - modalRect.height - 10; // Position au-dessus de la planète
+            top = planetRect.top + window.scrollY - modalRect.height - 10;
         }
-        // S'assurer que la modale ne dépasse pas le bord supérieur du conteneur
         if (top < containerRect.top + window.scrollY) {
-            top = containerRect.top + window.scrollY + 10; // Position légèrement en dessous du bord supérieur
+            top = containerRect.top + window.scrollY + 10;
         }
-        // Applique la position calculée à la modale
-        modal.style.top = `${top}px`;
-        modal.style.left = `${left}px`;
+        modal.style.top = `${top}px`; // Appliquer la nouvelle position verticale
+        modal.style.left = `${left}px`; // Appliquer la nouvelle position horizontale
     }
+
     // Fonction pour fermer la modale
     function closeModal() {
         const modal = document.getElementById('modal');
-        modal.style.display = 'none';
-        modal.style.width = '40%'; // Réinitialiser la largeur de la modale après fermeture
+        modal.style.display = 'none'; // Masquer la modale
+        modal.style.width = '40%'; // Réinitialiser la largeur de la modale
     }
-    // Ajouter un écouteur d'événement pour le bouton de fermeture de la modale
-    document.querySelector('.close-button').addEventListener('click', closeModal);
-    // Fermer la modale lorsqu'on clique en dehors de celle-ci
-    document.addEventListener('click', function (event) {
-        if (event.target === document.getElementById('modal')) {
-            closeModal();
-        }
-    });
-    // Créer les planètes en utilisant les données fournies
-    planetData.forEach(data => createPlanet(data));
 });

@@ -3,7 +3,7 @@ main {
     flex: 1;
     /* Permet au main de prendre tout l'espace vertical disponible */
     position: relative;
-    /* Définit une position relative pour le positionnement des enfants absolus */
+    /* Définit une position relative pour le positionnement des éléments enfants avec position absolue */
     overflow: hidden;
     /* Cache tout débordement pour éviter que le canvas dépasse */
     max-width: 100vw;
@@ -12,13 +12,18 @@ main {
 
 #myVideo {
     width: 100vw;
+    /* Définit la largeur de la vidéo à 100% de la largeur de la fenêtre */
     height: 100vh;
+    /* Définit la hauteur de la vidéo à 100% de la hauteur de la fenêtre */
     object-fit: cover;
+    /* Assure que la vidéo couvre tout le conteneur sans déformation */
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    /* Aligne la vidéo pour qu'elle remplisse entièrement le conteneur */
     z-index: -1;
+    /* Positionne la vidéo derrière tous les autres éléments */
 }
 
 /* Styles pour l'élément canvas dans le main */
@@ -26,23 +31,28 @@ main {
     position: absolute;
     /* Positionne le canvas absolument par rapport au conteneur parent */
     top: 0;
-    /* Aligne le canvas avec le haut du conteneur */
     left: 0;
-    /* Aligne le canvas avec le côté gauche du conteneur */
+    /* Aligne le canvas avec le coin supérieur gauche du conteneur */
     width: 100%;
     /* Prend toute la largeur du conteneur parent */
     height: 100%;
     /* Prend toute la hauteur du conteneur parent */
 }
 
+@keyframes tournicoti {
+    100% {
+        background-position: 200% 0;
+    }
+
+    /* Animation pour déplacer la position de l'arrière-plan du canvas */
+}
+
 /* Styles pour les planètes */
 .planet {
-    position: absolute;
-    /* Positionne les planètes de manière absolue dans leur conteneur */
+    position: fixed;
+    /* Positionne les planètes de manière fixe par rapport à la fenêtre */
     border-radius: 50%;
     /* Donne une forme circulaire aux planètes */
-    background: radial-gradient(circle, #444, #888);
-    /* Applique un dégradé radial pour donner un effet de profondeur */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Ajoute une transition douce pour les transformations et les ombres */
     cursor: pointer;
@@ -51,28 +61,36 @@ main {
     /* Centre le texte horizontalement à l'intérieur de la planète */
     line-height: 1.5;
     /* Définit la hauteur de ligne pour centrer verticalement le texte */
-    font-size: 1em;
+    font-size: 1.2em;
     /* Taille du texte à l'intérieur des planètes */
     font-weight: bold;
     /* Met le texte en gras pour le rendre plus visible */
     display: flex;
-    /* Utilise Flexbox pour aligner le contenu */
+    /* Utilise Flexbox pour aligner le contenu à l'intérieur des planètes */
     align-items: center;
     /* Centre verticalement le contenu de la planète */
     justify-content: center;
     /* Centre horizontalement le contenu de la planète */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-    /* Ajoute une ombre blanche douce pour donner un effet lumineux */
     color: #00ff00;
     /* Définit la couleur du texte en vert fluo */
-    background-clip: content-box;
-    /* Restreint l'arrière-plan au contenu de la boîte */
+    /* background-clip: content-box; */
+    /* (Commenté) Restreint l'arrière-plan au contenu de la boîte */
     padding: 0.5em;
     /* Ajoute un espacement interne pour améliorer l'apparence */
-    min-width: 60px;
+    min-width: 70px;
     /* Assure que la planète a une taille minimale pour que le texte soit lisible */
-    min-height: 60px;
+    min-height: 70px;
     /* Assure que la planète a une hauteur minimale pour que le texte soit lisible */
+    box-shadow: -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
+    /* Ajoute une ombre intérieure et extérieure pour donner de la profondeur */
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPDFPjtsLJ2bSPDuBldjVUQlu3JkOBRbxng&s) 0/auto 100%;
+    /* Définit une image d'arrière-plan pour les planètes */
+    animation: tournicoti 10s linear infinite;
+    /* Applique une animation de défilement continu */
+    filter: hue-rotate(28deg) drop-shadow(rgb(12, 2, 35) 0px 0px 4rem) drop-shadow(rgba(53, 112, 181, 0.357) -3rem -3rem 3rem);
+    /* Applique des filtres pour ajuster la couleur et ajouter des ombres */
+    clip-path: circle(380px);
+    /* Découpe les planètes en forme de cercle */
 }
 
 /* Animation au survol */
@@ -81,6 +99,8 @@ main {
     /* Agrandit légèrement la planète lors du survol pour attirer l'attention */
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
     /* Augmente l'ombre pour un effet lumineux plus intense */
+    filter: hue-rotate(28deg) drop-shadow(rgb(12, 2, 35) 0px 0px 4rem) drop-shadow(rgba(253, 242, 253, 0.357) -3rem -3rem 3rem);
+    /* Ajuste les filtres de couleur et d'ombre lors du survol */
 }
 
 /* Animation lors du clic sur une planète */
@@ -122,7 +142,8 @@ main {
     display: none;
     /* Cache la modale par défaut */
     width: 40%;
-    /* Définit la largeur de la modale */
+    height: 20%;
+    /* Définit la largeur et la hauteur de la modale */
     z-index: 100;
     /* Assure que la modale est affichée au-dessus des autres éléments */
 }

@@ -1,339 +1,354 @@
 /* Styles pour le header */
 header {
     display: flex;
-    /* Utilise Flexbox pour organiser les éléments du header horizontalement */
+    /* Utilise Flexbox pour disposer les éléments horizontalement */
     justify-content: space-between;
-    /* Espace les éléments du header de manière égale */
+    /* Espace les éléments à l'intérieur du header */
     width: 100%;
-    /* Prend toute la largeur disponible */
+    /* Le header prend toute la largeur de la page */
     height: 70px;
-    /* Définit une hauteur fixe pour le header */
+    /* Définit une hauteur fixe */
     background: #1a1a1a;
-    /* Couleur légèrement plus claire pour le fond du header pour contraster avec le body */
+    /* Arrière-plan sombre */
     border-bottom: 3px solid #00ff00;
-    /* Ajoute une bordure inférieure verte pour délimiter le header */
+    /* Bordure verte pour délimiter le header */
     align-items: center;
-    /* Centre verticalement les éléments à l'intérieur du header */
+    /* Centre verticalement les éléments */
     padding: 0 20px;
-    /* Ajoute des espaces latéraux pour aérer les éléments à l'intérieur du header */
+    /* Ajoute des espaces sur les côtés du header */
 }
 
-/* Styles pour les sections du header */
+/* Styles pour chaque section du header */
 .header-section {
     display: flex;
-    /* Utilise Flexbox pour l'organisation interne des sections */
+    /* Flexbox pour disposer les éléments dans chaque section */
     align-items: center;
-    /* Centre verticalement les éléments à l'intérieur de chaque section */
+    /* Centre verticalement les éléments */
     justify-content: center;
-    /* Centre horizontalement les éléments à l'intérieur de chaque section */
+    /* Centre horizontalement les éléments */
     color: #00ff00;
-    /* Texte en vert fluo pour s'aligner avec le thème */
+    /* Texte vert fluo pour le thème Fallout */
     font-size: 20px;
-    /* Définit la taille de police du texte */
+    /* Taille de police */
     flex: 1;
-    /* Assure que chaque section occupe une portion équitable de l'espace disponible */
+    /* Assure une répartition équitable des sections */
     transition: color 0.3s, transform 0.3s;
-    /* Ajoute une transition douce pour les changements de couleur et de transformation */
+    /* Transition pour les animations */
 }
 
-/* Styles pour les images dans les sections du header */
+/* Styles pour les images dans les sections */
 .header-section img {
     height: 40px;
-    /* Ajuste la taille du logo pour s'adapter esthétiquement au header */
+    /* Taille des images */
     filter: drop-shadow(0 0 5px #00ff00);
-    /* Applique un effet néon vert autour du logo */
+    /* Effet néon vert autour des images */
     transition: filter 0.3s;
-    /* Ajoute une transition douce pour le filtre de l'image */
+    /* Transition douce du filtre */
 }
 
-/* Styles pour les liens dans les sections du header */
+/* Styles pour les liens du header */
 .header-section a {
     color: #00ff00;
-    /* Définit la couleur du texte des liens */
+    /* Liens verts */
     text-decoration: none;
-    /* Supprime le soulignement par défaut des liens */
+    /* Pas de soulignement */
     font-weight: bold;
-    /* Rend le texte des liens en gras */
+    /* Texte en gras */
     transition: text-shadow 0.3s;
-    /* Ajoute une transition douce pour les ombres de texte */
+    /* Animation d'ombre pour le texte */
 }
 
-/* Effet de survol pour les liens du header */
+/* Effet au survol des liens */
 .header-section a:hover {
     text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-    /* Crée un effet de surbrillance néon lorsque l'on survole un lien */
+    /* Effet néon au survol */
 }
 
-/* Effet de survol pour les images dans les sections du header */
+/* Effet au survol des images */
 .header-section:hover img {
     filter: drop-shadow(0 0 15px #00ff00);
-    /* Accentue l'effet néon du logo lors du survol */
+    /* Accentue l'effet néon */
 }
 
-/* Style pour l'icône de recherche et le champ de recherche */
+/* Conteneur pour la recherche */
 .search-container {
     position: relative;
+    /* Positionnement pour permettre l'alignement de l'icône */
 }
 
-/* Style pour le champ de recherche */
+/* Champ de recherche */
 .search-container input {
     display: none;
     /* Masqué par défaut */
     padding: 5px 30px 5px 10px;
+    /* Espacement interne */
     border: none;
+    /* Pas de bordure */
     border-radius: 20px;
+    /* Arrondit les coins */
     outline: none;
+    /* Supprime le contour par défaut */
     font-size: 16px;
+    /* Taille de police */
 }
 
+/* Icône de recherche */
 .search-icon {
     position: absolute;
+    /* Positionné absolument par rapport au conteneur */
     right: 10px;
+    /* Aligné à droite */
     top: 50%;
+    /* Centré verticalement */
     transform: translateY(-50%);
+    /* Ajuste le centrage vertical */
     font-size: 20px;
+    /* Taille de l'icône */
     pointer-events: none;
-    /* Permet de cliquer sur le champ de recherche */
+    /* L'icône n'interfère pas avec les interactions */
 }
 
 /* Styles pour l'icône d'astronaute */
 .astronaut .icon {
     font-size: 24px;
-    /* Définit la taille de l'icône d'astronaute */
+    /* Taille de l'icône */
     transition: transform 0.3s;
-    /* Ajoute une transition douce pour la transformation */
+    /* Transition douce */
 }
 
-/* Effet de survol pour l'icône d'astronaute */
+/* Rotation au survol de l'icône d'astronaute */
 .astronaut:hover .icon {
     transform: rotate(360deg);
-    /* Effectue une rotation complète de l'icône lors du survol */
+    /* Rotation complète lors du survol */
 }
 
-/* Styles pour l'icône du menu */
+/* Styles pour l'icône du menu (hamburger) */
 .menu-icon {
     cursor: pointer;
-    /* Change le curseur pour indiquer que l'élément est cliquable */
+    /* Indique que l'élément est cliquable */
     display: flex;
-    /* Utilise Flexbox pour disposer les barres du menu */
+    /* Utilise Flexbox pour aligner les barres */
     flex-direction: column;
     /* Aligne les barres verticalement */
     align-items: center;
-    /* Centre horizontalement les barres du menu */
+    /* Centre les barres */
     transition: filter 0.3s;
-    /* Ajoute une transition douce pour le filtre */
+    /* Transition douce pour le filtre */
 }
 
 /* Styles pour les barres du menu */
 .menu-bar {
     width: 30px;
-    /* Définit la largeur des barres du menu */
+    /* Largeur des barres du menu */
     height: 3px;
-    /* Définit la hauteur des barres du menu */
+    /* Hauteur des barres */
     background: #00ff00;
-    /* Colore les barres du menu en vert fluo */
+    /* Barres vertes */
     margin: 3px 0;
-    /* Ajoute un espacement vertical entre les barres */
+    /* Espacement entre les barres */
     transition: transform 0.3s;
-    /* Ajoute une transition douce pour la transformation */
+    /* Transition douce pour l'agrandissement */
 }
 
-/* Effet de survol pour l'icône du menu */
+/* Effet au survol des barres du menu */
 .menu-icon:hover .menu-bar {
     transform: scale(1.2);
-    /* Agrandit les barres du menu au survol pour un effet visuel dynamique */
+    /* Agrandit les barres au survol */
 }
 
-/* Styles pour le contenu déroulant du menu */
+/* Contenu déroulant du menu */
 .menu-content {
     display: none;
-    /* Cache le contenu du menu par défaut */
+    /* Caché par défaut */
     position: absolute;
-    /* Positionne le menu par rapport à son parent le plus proche avec positionnement */
+    /* Positionné juste en dessous du header */
     top: 70px;
-    /* Positionne le menu juste en dessous du header */
+    /* Placement sous le header */
     right: 0;
-    /* Aligne le menu à droite de son conteneur parent */
+    /* Aligné à droite */
     background: #1a1a1a;
-    /* Utilise une couleur de fond sombre pour contraster avec le texte */
+    /* Fond sombre */
     border: 1px solid #00ff00;
-    /* Ajoute une bordure verte autour du menu */
+    /* Bordure verte */
     border-radius: 5px;
-    /* Arrondit les coins du menu */
+    /* Coins arrondis */
     padding: 10px;
-    /* Ajoute un espacement interne autour du contenu du menu */
+    /* Espacement interne */
     z-index: 10;
-    /* Assure que le menu se trouve au-dessus d'autres éléments */
+    /* S'assure que le menu est au-dessus d'autres éléments */
     width: 200px;
-    /* Définit la largeur du menu déroulant */
+    /* Largeur du menu */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    /* Ajoute une ombre portée pour donner de la profondeur */
+    /* Ombre pour l'effet de profondeur */
 }
 
-/* Styles pour les liens dans le menu déroulant */
+/* Styles pour les liens du menu déroulant */
 .menu-content a {
     display: block;
-    /* Affiche les liens en tant que blocs pour occuper toute la largeur */
+    /* Les liens prennent toute la largeur */
     color: #00ff00;
-    /* Définit la couleur du texte en vert fluo */
+    /* Liens verts */
     text-decoration: none;
-    /* Supprime le soulignement par défaut des liens */
+    /* Pas de soulignement */
     padding: 10px;
-    /* Ajoute un espacement autour des liens pour faciliter le clic */
+    /* Espacement interne */
 }
 
-/* Effet de survol pour les liens du menu déroulant */
+/* Effet au survol des liens du menu */
 .menu-content a:hover {
     background-color: #00ff00;
-    /* Change la couleur de fond au survol pour indiquer l'interactivité */
+    /* Fond vert au survol */
     color: #000;
-    /* Change la couleur du texte au survol pour un contraste suffisant */
+    /* Texte noir pour contraste */
 }
 
-/* Styles pour la barre de recherche */
+/* Styles pour le champ de recherche */
 .search input {
     width: 80%;
-    /* Définit la largeur de l'input pour occuper 80% de l'espace disponible */
+    /* Largeur de l'input */
     padding: 8px 12px;
-    /* Ajoute un espacement interne pour améliorer l'ergonomie */
+    /* Espacement interne */
     border: 2px solid #00ff00;
-    /* Ajoute une bordure verte autour de l'input */
+    /* Bordure verte */
     border-radius: 5px;
-    /* Arrondit les coins de l'input */
+    /* Coins arrondis */
     background-color: #000;
-    /* Définit une couleur de fond noire */
+    /* Fond noir */
     color: #00ff00;
-    /* Définit la couleur du texte de l'input */
+    /* Texte vert */
     font-size: 16px;
-    /* Définit la taille de police du texte de l'input */
+    /* Taille de police */
     outline: none;
-    /* Supprime le contour par défaut lors du focus */
+    /* Supprime le contour par défaut */
     transition: border 0.3s, box-shadow 0.3s;
-    /* Ajoute une transition douce pour les bordures et les ombres */
+    /* Animations pour la bordure et l'ombre */
     margin: 0 10px;
-    /* Ajoute un espacement latéral autour de l'input */
+    /* Espacement externe */
 }
 
-/* Styles pour le texte placeholder dans l'input de recherche */
+/* Placeholder dans l'input de recherche */
 .search input::placeholder {
     color: #00ff00;
-    /* Définit la couleur du texte placeholder en vert fluo */
+    /* Placeholder vert */
 }
 
-/* Effet de survol et de focus pour l'input de recherche */
+/* Effet au survol et focus de l'input de recherche */
 .search input:hover,
 .search input:focus {
     border-color: #33ff33;
-    /* Change la couleur de la bordure lors du survol ou du focus */
+    /* Bordure plus claire au focus ou survol */
     box-shadow: 0 0 10px #33ff33;
-    /* Ajoute une ombre autour de l'input pour indiquer le focus */
+    /* Ombre lumineuse verte */
 }
 
 /* Styles pour la modale */
 .modal {
     position: absolute;
-    /* Positionne la modale de manière absolue par rapport à son conteneur */
+    /* Positionné dans l'interface */
     background: #1a1a1a;
-    /* Utilise un fond sombre pour la modale */
+    /* Fond sombre */
     border: 1px solid #00ff00;
-    /* Ajoute une bordure verte autour de la modale */
+    /* Bordure verte */
     border-radius: 8px;
-    /* Arrondit les coins de la modale */
+    /* Coins arrondis */
     padding: 20px;
-    /* Ajoute un espacement interne pour aérer le contenu */
+    /* Espacement interne */
     color: #00ff00;
-    /* Définit la couleur du texte en vert fluo */
+    /* Texte vert */
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    /* Ajoute une ombre pour donner de la profondeur à la modale */
+    /* Ombre lumineuse */
     display: none;
-    /* Cache la modale par défaut */
+    /* Caché par défaut */
     width: 40%;
-    /* Définit la largeur de la modale */
+    /* Largeur de la modale */
     z-index: 100;
-    /* Assure que la modale est affichée au-dessus des autres éléments */
+    /* S'assure que la modale est au-dessus d'autres éléments */
 }
 
+/* Styles pour le titre dans la modale */
 .modal h2 {
     margin-top: 0;
-    /* Supprime le margin-top pour aligner correctement le titre */
+    /* Supprime l'espacement supérieur */
 }
 
+/* Bouton de fermeture de la modale */
 .modal .close-button {
     cursor: pointer;
-    /* Indique que le bouton de fermeture est cliquable */
+    /* Indique que le bouton est cliquable */
     color: #00ff00;
-    /* Utilise une couleur verte pour le bouton de fermeture */
+    /* Couleur verte pour le bouton de fermeture */
     font-size: 24px;
-    /* Définit la taille de police du bouton de fermeture */
+    /* Taille de police */
     background: none;
-    /* Supprime tout fond du bouton */
+    /* Pas de fond */
     border: none;
-    /* Supprime toute bordure du bouton */
+    /* Pas de bordure */
     position: absolute;
-    /* Positionne le bouton dans le coin supérieur droit de la modale */
+    /* Positionné dans le coin supérieur droit */
     top: 10px;
-    /* Place le bouton de fermeture à 10px du haut de la modale */
+    /* Distance du haut */
     right: 10px;
-    /* Place le bouton de fermeture à 10px de la droite de la modale */
+    /* Distance de la droite */
 }
 
+/* Lien d'expansion caché par défaut */
 .modal #expand-link {
     display: none;
-    /* Cache le lien d'expansion par défaut */
     color: #00ff00;
-    /* Utilise une couleur verte pour le lien d'expansion */
+    /* Lien vert */
     text-decoration: underline;
-    /* Souligne le lien pour indiquer son interactivité */
+    /* Souligne pour indiquer que c'est un lien */
     cursor: pointer;
-    /* Change le curseur pour indiquer que le lien est cliquable */
+    /* Indique que c'est cliquable */
 }
 
-/* Styles pour le responsive design */
+/* Responsive design pour les écrans de largeur maximale de 768px */
 @media (max-width: 768px) {
     .header-section {
         font-size: 16px;
-        /* Réduit la taille du texte pour s'adapter aux écrans plus petits */
+        /* Réduit la taille du texte pour les petits écrans */
     }
 
     .menu-bar {
         width: 25px;
-        /* Réduit la largeur des barres du menu pour s'adapter aux petits écrans */
+        /* Réduit la largeur des barres du menu pour les petits écrans */
     }
 
     .auth-button {
         display: none;
-        /* Masquer le bouton d'authentification sur les petits écrans */
+        /* Masque le bouton d'authentification sur les petits écrans */
     }
 
     .astronaut .icon {
         display: inline-block;
-        /* Afficher l'icône d'astronaute sur les petits écrans */
+        /* Affiche l'icône d'astronaute sur les petits écrans */
     }
 
     .search-container input {
         display: none;
-        /* Affiche le champ de recherche */
+        /* Masque le champ de recherche */
     }
 
     .search-icon {
         display: inline-block;
-        /* Affiche l'icône de recherche sur les petits écrans*/
+        /* Affiche l'icône de recherche sur les petits écrans */
     }
 }
 
+/* Responsive design pour les écrans de largeur minimale de 769px */
 @media (min-width: 769px) {
     .search-container input {
         display: inline-block;
-        /* Affiche le champ de recherche */
+        /* Affiche le champ de recherche sur les grands écrans */
     }
 
     .search-icon {
         display: none;
-        /* Masque l'icône de recherche */
+        /* Masque l'icône de recherche sur les grands écrans */
     }
 
     .astronaut .icon {
         display: none;
-        /* Masquer l'icône d'astronaute sur les grands écrans */
+        /* Masque l'icône d'astronaute sur les grands écrans */
     }
 }
