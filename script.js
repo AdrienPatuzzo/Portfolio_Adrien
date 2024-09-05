@@ -29,8 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: 'Contact', summary: "Résumé de Contact", details: "Détails de Contact...", imageUrl: 'https://stevealbers.net/albers/sos/saturn/tethys/tethys_rgb_cyl_thumb.jpg' },
     ];
 
-    // Créer chaque planète dans le conteneur
-    planetData.forEach(data => createPlanet(data));
+    // --- Position fixe pour chaque planète ---
+    const fixedPositions = [
+        { top: 155, left: 650 },
+        { top: 250, left: 1500 },
+        { top: 350, left: 700 },
+        { top: 750, left: 1100 },
+        { top: 600, left: 500 },
+        { top: 450, left: 1200 },
+    ];
+
+    // Créer chaque planète dans le conteneur avec une position fixe
+    planetData.forEach((data, index) => createPlanet(data, index));
 
     // --- Ajout des événements de redimensionnement et d'affichage ---
     window.addEventListener('resize', adjustDisplay); // Ajuster l'affichage lorsque la fenêtre est redimensionnée
@@ -86,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fonction pour créer et positionner une planète dans le conteneur
-    function createPlanet(data) {
+    function createPlanet(data, index) {
         const planet = document.createElement('div');
         planet.className = 'planet'; // Appliquer la classe CSS "planet"
         planet.innerText = data.name; // Nom de la planète
@@ -94,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Obtenir la taille du texte pour ajuster la taille de la planète
         const textSize = getTextSize(data.name);
         let size = Math.max(textSize.width, textSize.height) + 20;
-        let position = getPlanetPosition(size); // Positionner la planète de manière aléatoire sans chevauchement
+        let position = fixedPositions[index]; // Positionner la planète de manière fixe
 
         // Appliquer la taille et la position à la planète
         planet.style.width = `${size}px`;
@@ -129,42 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return { width: metrics.width, height: 18 }; // Retourner les dimensions du texte
     }
 
-    // Fonction pour obtenir une position aléatoire pour une planète sans chevauchement
-    function getPlanetPosition(size) {
-        let top, left, overlaps = true, attempts = 0;
-        const maxAttempts = 1000; // Limiter le nombre d'essais pour éviter des boucles infinies
-
-        while (overlaps && attempts < maxAttempts) {
-            overlaps = false;
-            attempts++;
-            top = Math.random() * (planetContainer.clientHeight - size); // Position aléatoire en haut
-            left = Math.random() * (planetContainer.clientWidth - size); // Position aléatoire à gauche
-            top = Math.max(top, size / 2); // S'assurer que la planète ne dépasse pas le bord supérieur
-            left = Math.max(left, size / 2); // S'assurer que la planète ne dépasse pas le bord gauche
-
-            // Vérifier le chevauchement avec d'autres planètes
-            for (const otherPlanet of planetContainer.children) {
-                const otherRect = otherPlanet.getBoundingClientRect();
-                const newRect = {
-                    top: planetContainer.getBoundingClientRect().top + top,
-                    left: planetContainer.getBoundingClientRect().left + left,
-                    width: size,
-                    height: size,
-                };
-                if (!(
-                    newRect.left + newRect.width < otherRect.left ||
-                    newRect.left > otherRect.left + otherRect.width ||
-                    newRect.top + newRect.height < otherRect.top ||
-                    newRect.top > otherRect.top + otherRect.height
-                )) {
-                    overlaps = true; // Chevauchement détecté, recommencer la position
-                    break;
-                }
-            }
-        }
-        return { top, left }; // Retourner la position calculée
-    }
-
     // Fonction pour ouvrir la modale avec les informations de la planète
     function openModal(data, planet) {
         const modal = document.getElementById('modal');
@@ -173,55 +147,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const expandLink = document.getElementById('expand-link');
 
         modalTitle.textContent = data.name; // Afficher le nom de la planète
-        modalDescription.textContent = data.summary; // Afficher le résumé de la planète
-        expandLink.style.display = data.details ? 'block' : 'none'; // Afficher ou masquer le lien "Expand" selon s'il y a des détails
+        modalDescription.textContent = data.summary; // Afficher le résumé
+        expandLink.textContent = 'Cliquez ici pour en savoir plus'; // Lien pour en savoir plus
+        expandLink.href = '#'; // Lien à définir si nécessaire
 
-        // Gérer le clic sur "Expand" pour afficher plus de détails
-        expandLink.onclick = function (event) {
-            event.preventDefault();
-            modalDescription.textContent = data.details; // Afficher les détails complets
-            modal.style.width = '80%'; // Agrandir la modale
-            adjustModalPosition(modal, planet); // Ajuster la position de la modale
-        };
-
-        adjustModalPosition(modal, planet); // Ajuster la position initiale de la modale
         modal.style.display = 'block'; // Afficher la modale
+
+        expandLink.onclick = function () {
+            modalDescription.textContent = data.details; // Remplacer le résumé par les détails complets
+            expandLink.style.display = 'none'; // Masquer le lien après clic
+        };
     }
 
-    // Fonction pour ajuster la position de la modale par rapport à la planète cliquée
-    function adjustModalPosition(modal, planet) {
-        const planetRect = planet.getBoundingClientRect();
-        const containerRect = planetContainer.getBoundingClientRect();
-        const modalRect = modal.getBoundingClientRect();
-        const mainRect = document.querySelector('main').getBoundingClientRect();
-
-        // Calculer la position en fonction de la planète cliquée
-        let top = planetRect.bottom + window.scrollY;
-        let left = planetRect.left - containerRect.left + window.scrollX;
-        left = planetRect.left - containerRect.left + (planetRect.width / 2) - (modalRect.width / 2);
-
-        // Ajuster si la modale dépasse la largeur ou hauteur de l'écran
-        if (left + modalRect.width > containerRect.width + containerRect.left) {
-            left = containerRect.width + containerRect.left - modalRect.width;
-        }
-        if (top + modalRect.height > mainRect.bottom + window.scrollY) {
-            top = planetRect.top + window.scrollY - modalRect.height - 10;
-        }
-        if (top < containerRect.top + window.scrollY) {
-            top = containerRect.top + window.scrollY + 10;
-        }
-        modal.style.top = `${top}px`; // Appliquer la nouvelle position verticale
-        modal.style.left = `${left}px`; // Appliquer la nouvelle position horizontale
-    }
-
-    // Fonction pour ouvrir et fermer la modale
-    function openModal() {
-        document.querySelector('.modal').style.display = 'block';
-        document.body.classList.add('no-scroll');
-    }
-
+    // Fonction pour fermer la modale
     function closeModal() {
-        document.querySelector('.modal').style.display = 'none';
-        document.body.classList.remove('no-scroll');
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none'; // Masquer la modale
     }
 });
