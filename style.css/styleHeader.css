@@ -65,7 +65,8 @@ header {
 }
 
 /* Effet au survol des images */
-.header-section:hover img {
+img:hover,
+.astronaut .icon:hover {
     filter: drop-shadow(0 0 15px #00ff00);
     /* Accentue l'effet néon */
 }
@@ -117,7 +118,7 @@ header {
 }
 
 /* Rotation au survol de l'icône d'astronaute */
-.astronaut:hover .icon {
+.astronaut .icon:hover {
     transform: rotate(360deg);
     /* Rotation complète lors du survol */
 }
