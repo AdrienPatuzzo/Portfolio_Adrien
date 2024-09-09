@@ -79,7 +79,7 @@ img:hover,
 
 /* Champ de recherche */
 .search-container input {
-    display: flex;
+    display: none;
     /* Masqué par défaut */
     padding: 5px 30px 5px 10px;
     /* Espacement interne */
@@ -107,6 +107,11 @@ img:hover,
     /* Taille de l'icône */
     pointer-events: none;
     /* L'icône n'interfère pas avec les interactions */
+}
+
+.search-icon:hover {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    cursor: pointer;
 }
 
 /* Styles pour l'icône d'astronaute */

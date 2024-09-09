@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuContent = document.querySelector('.menu-content'); // Contenu du menu
     const astronautIcon = document.querySelector('.astronaut .icon'); // Icône d'astronaute (pour petits écrans)
     const authButton = document.querySelector('.auth-button'); // Bouton d'authentification (pour grands écrans)
+    const authModal = document.getElementById('auth-modal'); // Modale d'authentification
 
     // --- Initialisation du lecteur vidéo ---
     const video = document.getElementById("myVideo");
@@ -68,15 +69,18 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawGalaxy() {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // Effacer le contenu actuel du canevas
         const numStars = 1000; // Nombre d'étoiles à dessiner
-        for (let i = 0; i < numStars; i++) {
-            const x = Math.random() * canvas.width; // Position aléatoire en x
-            const y = Math.random() * canvas.height; // Position aléatoire en y
-            const starSize = Math.random() * 1.5; // Taille aléatoire de l'étoile
-            ctx.beginPath();
-            ctx.arc(x, y, starSize, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${Math.random()})`; // Couleur aléatoire avec transparence
-            ctx.fill();
+        function drawStars() {
+            for (let i = 0; i < numStars; i++) {
+                const x = Math.random() * canvas.width; // Position aléatoire en x
+                const y = Math.random() * canvas.height; // Position aléatoire en y
+                const starSize = Math.random() * 1.5; // Taille aléatoire de l'étoile
+                ctx.beginPath();
+                ctx.arc(x, y, starSize, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.random()})`; // Couleur aléatoire avec transparence
+                ctx.fill();
+            }
         }
+        requestAnimationFrame(drawStars);
     }
 
     // Fonction pour ajuster l'affichage des éléments en fonction de la largeur de l'écran
@@ -93,6 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fonction pour basculer l'affichage du menu
     function toggleMenu() {
         menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+    }
+    if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
     }
 
     // Fonction pour créer et positionner une planète dans le conteneur
@@ -148,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalTitle.textContent = data.name; // Afficher le nom de la planète
         modalDescription.textContent = data.summary; // Afficher le résumé
-        expandLink.textContent = 'Cliquez ici pour en savoir plus'; // Lien pour en savoir plus
+        expandLink.textContent = 'Voir plus de détails'; // Lien pour en savoir plus
         expandLink.href = '#'; // Lien à définir si nécessaire
 
         modal.style.display = 'block'; // Afficher la modale
