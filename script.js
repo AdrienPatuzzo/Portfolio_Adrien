@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: 'About', summary: "Résumé d'About", details: "Détails d'About...", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbVgb6o-fT2QCo5xC6L5GFue1sPr9ueQHbxw&s' },
         { name: 'Skills', summary: "Résumé de Skills", details: "Détails de Skills...", imageUrl: 'https://3dvf.com/wp-content/uploads/2019/10/lroc_color_poles_2k.jpg' },
         { name: 'Work', summary: "Résumé de Work", details: "Détails de Work...", imageUrl: 'https://stevealbers.net/albers/sos/jupiter/io/io_rgb_cyl_thumb.jpg' },
-        { name: 'LinkedIn', summary: "Résumé de LinkedIn", details: "LinkedIn...", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPDFPjtsLJ2bSPDuBldjVUQlu3JkOBRbxng&s', redirect: "https://www.linkedin.com" },
+        { name: 'LinkedIn', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPDFPjtsLJ2bSPDuBldjVUQlu3JkOBRbxng&s', redirect: "https://www.linkedin.com" },
         { name: 'Hobby', summary: "Résumé de Hobby", details: "Détails de Hobby...", imageUrl: 'https://stevealbers.net/albers/sos/jupiter/europa/europa2_thumb.jpg' },
-        { name: 'Contact', summary: "Résumé de Contact", details: "Détails de Contact...", imageUrl: 'https://stevealbers.net/albers/sos/saturn/tethys/tethys_rgb_cyl_thumb.jpg' },
+        { name: 'Contact', imageUrl: 'https://stevealbers.net/albers/sos/saturn/tethys/tethys_rgb_cyl_thumb.jpg' },
     ];
 
     // --- Position fixe pour chaque planète ---
