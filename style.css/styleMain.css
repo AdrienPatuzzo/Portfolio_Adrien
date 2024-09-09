@@ -83,7 +83,7 @@ main {
     /* Assure que la planète a une hauteur minimale pour que le texte soit lisible */
     box-shadow: -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
     /* Ajoute une ombre intérieure et extérieure pour donner de la profondeur */
-    animation: tournicoti 20s linear infinite;
+    animation: tournicoti 12s linear infinite;
     /* Applique une animation de défilement continu */
     filter: hue-rotate(28deg) drop-shadow(rgb(12, 2, 35) 0px 0px 4rem) drop-shadow(rgba(53, 112, 181, 0.357) -3rem -3rem 3rem);
     /* Applique des filtres pour ajuster la couleur et ajouter des ombres */
