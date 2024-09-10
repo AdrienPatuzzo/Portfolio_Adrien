@@ -148,7 +148,7 @@ main {
     /* Ajoute une ombre pour donner de la profondeur à la modale */
     /* display: none; */
     /* Cache la modale par défaut */
-    width: 40%;
+    width: 80%;
     height: auto;
     /* Ajuste la hauteur automatiquement */
     max-height: 80vh;

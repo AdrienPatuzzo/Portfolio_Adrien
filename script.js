@@ -22,22 +22,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- Initialisation des données des planètes ---
     const planetContainer = document.querySelector('.planet-container');
     const planetData = [
-        { name: 'About', summary: "Résumé d'About", details: "Détails d'About...", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbVgb6o-fT2QCo5xC6L5GFue1sPr9ueQHbxw&s' },
-        { name: 'Skills', summary: "Résumé de Skills", details: "Détails de Skills...", imageUrl: 'https://3dvf.com/wp-content/uploads/2019/10/lroc_color_poles_2k.jpg' },
-        { name: 'Work', summary: "Résumé de Work", details: "Détails de Work...", imageUrl: 'https://stevealbers.net/albers/sos/jupiter/io/io_rgb_cyl_thumb.jpg' },
-        { name: 'LinkedIn', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPDFPjtsLJ2bSPDuBldjVUQlu3JkOBRbxng&s', redirect: "https://www.linkedin.com" },
-        { name: 'Hobby', summary: "Résumé de Hobby", details: "Détails de Hobby...", imageUrl: 'https://stevealbers.net/albers/sos/jupiter/europa/europa2_thumb.jpg' },
+        { name: 'About', summary: "Adrien, 33 ans et originaire d'Arras. Anciennement sur un parcours Dev wordpress, je me spécialise actuellemet dans une formation développeur web et web mobile...", details: "Détails d'About...", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbVgb6o-fT2QCo5xC6L5GFue1sPr9ueQHbxw&s' },
+        { name: 'Skills', summary: "Grace a mon éxpérience riche en diversité, j'ai acquis au court du temps des compétences variés tel que la gestion de programmes, de fichier, de compte ou encore d'analyste de données...", details: "Détails de Skills...", imageUrl: 'https://3dvf.com/wp-content/uploads/2019/10/lroc_color_poles_2k.jpg' },
+        { name: 'Work', summary: "Durant mon parcours j'ai exercé dans plusieurs activés tel que le monde bancaire, la logistique en passant part aide-soignant ou encore assistant formateur numérique...", details: "Détails de Work...", imageUrl: 'https://stevealbers.net/albers/sos/jupiter/io/io_rgb_cyl_thumb.jpg' },
+        { name: 'LinkedIn', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPDFPjtsLJ2bSPDuBldjVUQlu3JkOBRbxng&s', redirect: "https://www.linkedin.com/" },
+        { name: 'Hobby', summary: "Passionné d'informatique, mais aussi de sport, de musique et de lecture...", details: "Détails de Hobby...", imageUrl: 'https://stevealbers.net/albers/sos/jupiter/europa/europa2_thumb.jpg' },
         { name: 'Contact', imageUrl: 'https://stevealbers.net/albers/sos/saturn/tethys/tethys_rgb_cyl_thumb.jpg' },
     ];
 
     // --- Position fixe pour chaque planète ---
     const fixedPositions = [
-        { top: 255, left: 350 },
-        { top: 250, left: 1200 },
-        { top: 350, left: 700 },
-        { top: 750, left: 1100 },
-        { top: 600, left: 500 },
-        { top: 450, left: 1500 },
+        { top: 26, left: 20 },
+        { top: 31, left: 65 },
+        { top: 40, left: 42 },
+        { top: 77, left: 60 },
+        { top: 67, left: 25 },
+        { top: 50, left: 80 },
     ];
 
     // Créer chaque planète dans le conteneur avec une position fixe
@@ -116,8 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Appliquer la taille et la position à la planète
         planet.style.width = `${size}px`;
         planet.style.height = `${size}px`;
-        planet.style.top = `${position.top}px`;
-        planet.style.left = `${position.left}px`;
+        planet.style.top = `${position.top}%`;
+        planet.style.left = `${position.left}%`;
         planet.style.transform = `translate(-50%, -50%)`; // Centrer la planète
         planet.style.background = `url(${data.imageUrl}) 0/auto 100%`; // Définir l'image d'arrière-plan
         planet.style.backgroundSize = 'cover'; // Assurer que l'image couvre le conteneur
