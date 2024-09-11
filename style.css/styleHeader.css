@@ -83,8 +83,6 @@ img:hover,
     /* Masqué par défaut */
     padding: 5px 30px 5px 10px;
     /* Espacement interne */
-    /* border: none; */
-    /* Pas de bordure */
     border-radius: 20px;
     /* Arrondit les coins */
     outline: none;
@@ -97,8 +95,6 @@ img:hover,
 .search-icon {
     position: absolute;
     /* Positionné absolument par rapport au conteneur */
-    /* right: 10px; */
-    /* Aligné à droite */
     top: 50%;
     /* Centré verticalement */
     transform: translateY(-50%);
@@ -107,6 +103,10 @@ img:hover,
     /* Taille de l'icône */
     pointer-events: none;
     /* L'icône n'interfère pas avec les interactions */
+}
+
+.auth-button {
+    text-align: center;
 }
 
 .search-icon:hover {

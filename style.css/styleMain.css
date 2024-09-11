@@ -73,8 +73,6 @@ main {
     /* Centre horizontalement le contenu de la planète */
     color: #00ff00;
     /* Définit la couleur du texte en vert fluo */
-    /* background-clip: content-box; */
-    /* (Commenté) Restreint l'arrière-plan au contenu de la boîte */
     padding: 0.5em;
     /* Ajoute un espacement interne pour améliorer l'apparence */
     min-width: 70px;
@@ -117,7 +115,7 @@ main {
 
 /* Styles pour le conteneur des planètes */
 .planet-container {
-    position: flex;
+    /* position: flex; */
     /* Positionne le conteneur par rapport à son parent */
     width: 100%;
     /* Occupe toute la largeur disponible */
@@ -146,8 +144,6 @@ main {
     /* Définit la couleur du texte en vert fluo */
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     /* Ajoute une ombre pour donner de la profondeur à la modale */
-    /* display: none; */
-    /* Cache la modale par défaut */
     width: 80%;
     height: auto;
     /* Ajuste la hauteur automatiquement */
@@ -183,7 +179,6 @@ main {
 }
 
 .modal #expand-link {
-    /* display: none; */
     /* Cache le lien d'expansion par défaut */
     color: #00ff00;
     /* Utilise une couleur verte pour le lien d'expansion */
