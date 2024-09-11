@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuContent = document.querySelector('.menu-content'); // Contenu du menu
     const astronautIcon = document.querySelector('.astronaut .icon'); // Icône d'astronaute (pour petits écrans)
     const authButton = document.querySelector('.auth-button'); // Bouton d'authentification (pour grands écrans)
-    const authModal = document.getElementById('auth-modal'); // Modale d'authentification
 
     // --- Initialisation du lecteur vidéo ---
     const video = document.getElementById("myVideo");
@@ -80,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ctx.fill();
             }
         }
-        requestAnimationFrame(drawStars);
+        requestAnimationFrame(drawStars); //gérer les redessins d'animations de manière plus efficace
     }
 
     // Fonction pour ajuster l'affichage des éléments en fonction de la largeur de l'écran
