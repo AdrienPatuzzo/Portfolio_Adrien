@@ -10,8 +10,6 @@ services:
       - ./PORTFOLIO-ADRIEN:/usr/share/nginx/html
     networks:
       - webnet
-    env_file:
-      - .env
 
 networks:
   webnet:
