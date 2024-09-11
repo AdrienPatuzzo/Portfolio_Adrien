@@ -1,8 +1,9 @@
 services:
   web:
     container_name: portfolio-adrien
-    build: .
-    dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:80"
     volumes:
