@@ -1,0 +1,16 @@
+services:
+  web:
+    container_name: portfolio-adrien
+    build: .
+    dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./PORTFOLIO-ADRIEN:/usr/share/nginx/html
+    networks:
+      - webnet
+    env_file:
+      - .env
+
+networks:
+  webnet:
