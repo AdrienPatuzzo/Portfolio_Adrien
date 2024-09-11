@@ -8,10 +8,7 @@ services:
       - "8080:80"
     volumes:
       - ./PORTFOLIO-ADRIEN:/usr/share/nginx/html
-    networks:
-      - webnet
 
 networks:
-  webnet:
-    external: true
+  default:
     name: webnet
