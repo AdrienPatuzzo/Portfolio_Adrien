@@ -1,0 +1,19 @@
+/* Styles pour le footer */
+footer {
+    background: #1a1a1a;
+    /* Utilise une couleur de fond sombre pour le footer */
+    border-top: 3px solid #00ff00;
+    /* Ajoute une bordure supérieure verte pour séparer le footer du reste du contenu */
+    padding: 10px 20px;
+    /* Ajoute un espacement interne pour aérer le contenu du footer */
+    color: #00ff00;
+    /* Définit la couleur du texte en vert fluo */
+    text-align: center;
+    /* Centre le texte horizontalement dans le footer */
+    margin-top: auto;
+    /* Assure que le footer se trouve en bas de la page */
+    position: relative;
+    /* Définit une position relative pour permettre l'utilisation de z-index */
+    z-index: 1;
+    /* Assure que le footer reste visible au-dessus d'autres éléments */
+}

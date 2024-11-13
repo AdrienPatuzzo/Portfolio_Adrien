@@ -1,0 +1,30 @@
+/* Réinitialisation des marges et paddings par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+/* Styles pour le body */
+body {
+    background-color: #000;
+    /* Définit un fond noir pour l'ensemble de la page */
+    color: #00ff00;
+    /* Définit la couleur du texte en vert fluo pour une bonne visibilité */
+    font-family: 'courier', sans-serif;
+    /* Utilise la police Arial par défaut, avec une alternative générique sans serif */
+    height: 100vh;
+    /* Définit la hauteur du body pour occuper toute la hauteur de la fenêtre */
+    display: flex;
+    /* Utilise Flexbox pour faciliter l'agencement des éléments */
+    flex-direction: column;
+    /* Aligne les enfants du body verticalement */
+}
+
+.no-scroll {
+    overflow: hidden;
+}

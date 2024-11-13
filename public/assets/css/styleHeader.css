@@ -1,0 +1,349 @@
+/* Styles pour le header */
+header {
+    display: flex;
+    /* Utilise Flexbox pour disposer les éléments horizontalement */
+    justify-content: space-between;
+    /* Espace les éléments à l'intérieur du header */
+    width: 100%;
+    /* Le header prend toute la largeur de la page */
+    height: 70px;
+    /* Définit une hauteur fixe */
+    background: #1a1a1a;
+    /* Arrière-plan sombre */
+    border-bottom: 3px solid #00ff00;
+    /* Bordure verte pour délimiter le header */
+    align-items: center;
+    /* Centre verticalement les éléments */
+    padding: 10px;
+    /* Ajoute des espaces sur les côtés du header */
+}
+
+/* Styles pour chaque section du header */
+.header-section {
+    display: flex;
+    /* Flexbox pour disposer les éléments dans chaque section */
+    align-items: center;
+    /* Centre verticalement les éléments */
+    justify-content: center;
+    /* Centre horizontalement les éléments */
+    color: #00ff00;
+    /* Texte vert fluo pour le thème Fallout */
+    font-size: 20px;
+    /* Taille de police */
+    flex: 1;
+    /* Assure une répartition équitable des sections */
+    transition: color 0.3s, transform 0.3s;
+    /* Transition pour les animations */
+}
+
+/* Styles pour les images dans les sections */
+.header-section img {
+    height: 40px;
+    /* Taille des images */
+    filter: drop-shadow(0 0 5px #00ff00);
+    /* Effet néon vert autour des images */
+    transition: filter 0.3s;
+    /* Transition douce du filtre */
+}
+
+/* Styles pour les liens du header */
+.header-section a {
+    color: #00ff00;
+    /* Liens verts */
+    text-decoration: none;
+    /* Pas de soulignement */
+    font-weight: bold;
+    /* Texte en gras */
+    transition: text-shadow 0.3s;
+    /* Animation d'ombre pour le texte */
+}
+
+/* Effet au survol des liens */
+.header-section a:hover {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    /* Effet néon au survol */
+}
+
+/* Effet au survol des images */
+img:hover,
+.astronaut .icon:hover {
+    filter: drop-shadow(0 0 15px #00ff00);
+    /* Accentue l'effet néon */
+}
+
+/* Conteneur pour la recherche */
+.search-container {
+    position: relative;
+    /* Positionnement pour permettre l'alignement de l'icône */
+}
+
+/* Champ de recherche */
+.search-container input {
+    display: none;
+    /* Masqué par défaut */
+    padding: 5px 30px 5px 10px;
+    /* Espacement interne */
+    border-radius: 20px;
+    /* Arrondit les coins */
+    outline: none;
+    /* Supprime le contour par défaut */
+    font-size: 16px;
+    /* Taille de police */
+}
+
+/* Icône de recherche */
+.search-icon {
+    position: absolute;
+    /* Positionné absolument par rapport au conteneur */
+    top: 50%;
+    /* Centré verticalement */
+    transform: translateY(-50%);
+    /* Ajuste le centrage vertical */
+    font-size: 20px;
+    /* Taille de l'icône */
+    pointer-events: none;
+    /* L'icône n'interfère pas avec les interactions */
+}
+
+.auth-button {
+    text-align: center;
+}
+
+.search-icon:hover {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    cursor: pointer;
+}
+
+/* Styles pour l'icône d'astronaute */
+.astronaut .icon {
+    font-size: 24px;
+    /* Taille de l'icône */
+    transition: transform 0.3s;
+    /* Transition douce */
+}
+
+/* Rotation au survol de l'icône d'astronaute */
+.astronaut .icon:hover {
+    transform: rotate(360deg);
+    /* Rotation complète lors du survol */
+}
+
+/* Styles pour l'icône du menu (hamburger) */
+.menu-icon {
+    cursor: pointer;
+    /* Indique que l'élément est cliquable */
+    display: flex;
+    /* Utilise Flexbox pour aligner les barres */
+    flex-direction: column;
+    /* Aligne les barres verticalement */
+    align-items: center;
+    /* Centre les barres */
+    transition: filter 0.3s;
+    /* Transition douce pour le filtre */
+}
+
+/* Styles pour les barres du menu */
+.menu-bar {
+    width: 30px;
+    /* Largeur des barres du menu */
+    height: 3px;
+    /* Hauteur des barres */
+    background: #00ff00;
+    /* Barres vertes */
+    margin: 3px 0;
+    /* Espacement entre les barres */
+    transition: transform 0.3s;
+    /* Transition douce pour l'agrandissement */
+}
+
+/* Effet au survol des barres du menu */
+.menu-icon:hover .menu-bar {
+    transform: scale(1.2);
+    /* Agrandit les barres au survol */
+}
+
+/* Contenu déroulant du menu */
+.menu-content {
+    display: none;
+    /* Caché par défaut */
+    position: absolute;
+    /* Positionné juste en dessous du header */
+    top: 70px;
+    /* Placement sous le header */
+    right: 0;
+    /* Aligné à droite */
+    background: #1a1a1a;
+    /* Fond sombre */
+    border: 1px solid #00ff00;
+    /* Bordure verte */
+    border-radius: 5px;
+    /* Coins arrondis */
+    padding: 10px;
+    /* Espacement interne */
+    z-index: 10;
+    /* S'assure que le menu est au-dessus d'autres éléments */
+    width: 200px;
+    /* Largeur du menu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Ombre pour l'effet de profondeur */
+}
+
+/* Styles pour les liens du menu déroulant */
+.menu-content a {
+    display: block;
+    /* Les liens prennent toute la largeur */
+    color: #00ff00;
+    /* Liens verts */
+    text-decoration: none;
+    /* Pas de soulignement */
+    padding: 10px;
+    /* Espacement interne */
+}
+
+/* Effet au survol des liens du menu */
+.menu-content a:hover {
+    background-color: #00ff00;
+    /* Fond vert au survol */
+    color: #000;
+    /* Texte noir pour contraste */
+}
+
+/* Styles pour le champ de recherche */
+.search input {
+    width: 80%;
+    /* Largeur de l'input */
+    padding: 8px 12px;
+    /* Espacement interne */
+    border: 2px solid #00ff00;
+    /* Bordure verte */
+    border-radius: 5px;
+    /* Coins arrondis */
+    background-color: #000;
+    /* Fond noir */
+    color: #00ff00;
+    /* Texte vert */
+    font-size: 16px;
+    /* Taille de police */
+    outline: none;
+    /* Supprime le contour par défaut */
+    transition: border 0.3s, box-shadow 0.3s;
+    /* Animations pour la bordure et l'ombre */
+    margin: 0 10px;
+    /* Espacement externe */
+}
+
+/* Placeholder dans l'input de recherche */
+.search input::placeholder {
+    color: #00ff00;
+    /* Placeholder vert */
+}
+
+/* Effet au survol et focus de l'input de recherche */
+.search input:hover,
+.search input:focus {
+    border-color: #33ff33;
+    /* Bordure plus claire au focus ou survol */
+    box-shadow: 0 0 10px #33ff33;
+    /* Ombre lumineuse verte */
+}
+
+/* Styles pour la modale */
+.modal {
+    position: absolute;
+    /* Positionné dans l'interface */
+    background: #1a1a1a;
+    /* Fond sombre */
+    border: 1px solid #00ff00;
+    /* Bordure verte */
+    border-radius: 8px;
+    /* Coins arrondis */
+    padding: 20px;
+    /* Espacement interne */
+    color: #00ff00;
+    /* Texte vert */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    /* Ombre lumineuse */
+    display: none;
+    /* Caché par défaut */
+    width: 40%;
+    /* Largeur de la modale */
+    z-index: 100;
+    /* S'assure que la modale est au-dessus d'autres éléments */
+}
+
+/* Styles pour le titre dans la modale */
+.modal h2 {
+    margin-top: 0;
+    /* Supprime l'espacement supérieur */
+}
+
+/* Bouton de fermeture de la modale */
+.modal .close-button {
+    cursor: pointer;
+    /* Indique que le bouton est cliquable */
+    color: #00ff00;
+    /* Couleur verte pour le bouton de fermeture */
+    font-size: 24px;
+    /* Taille de police */
+    background: none;
+    /* Pas de fond */
+    border: none;
+    /* Pas de bordure */
+    position: absolute;
+    /* Positionné dans le coin supérieur droit */
+    top: 10px;
+    /* Distance du haut */
+    right: 10px;
+    /* Distance de la droite */
+}
+
+/* Responsive design pour les écrans de largeur maximale de 768px */
+@media (max-width: 768px) {
+    .header-section {
+        font-size: 16px;
+        /* Réduit la taille du texte pour les petits écrans */
+    }
+
+    .menu-bar {
+        width: 25px;
+        /* Réduit la largeur des barres du menu pour les petits écrans */
+    }
+
+    .auth-button {
+        display: none;
+        /* Masque le bouton d'authentification sur les petits écrans */
+    }
+
+    .astronaut .icon {
+        display: inline-block;
+        /* Affiche l'icône d'astronaute sur les petits écrans */
+    }
+
+    .search-container input {
+        display: none;
+        /* Masque le champ de recherche */
+    }
+
+    .search-icon {
+        display: inline-block;
+        /* Affiche l'icône de recherche sur les petits écrans */
+    }
+}
+
+/* Responsive design pour les écrans de largeur minimale de 769px */
+@media (min-width: 769px) {
+    .search-container input {
+        display: inline-block;
+        /* Affiche le champ de recherche sur les grands écrans */
+    }
+
+    .search-icon {
+        display: none;
+        /* Masque l'icône de recherche sur les grands écrans */
+    }
+
+    .astronaut .icon {
+        display: none;
+        /* Masque l'icône d'astronaute sur les grands écrans */
+    }
+}

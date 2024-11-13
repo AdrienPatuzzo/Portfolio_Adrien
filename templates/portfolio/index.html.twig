@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ siteInfo.title }}
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/styleBody.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/styleFooter.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/styleHeader.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/styleMain.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include 'partials/header.html.twig' with {'siteInfo': siteInfo, 'menuItems': menuItems} %}
+
+	<main>
+		<video autoplay muted loop id="myVideo">
+			<source src="{{ asset('assets/images/15712-266043579_small.mp4') }}" type="video/mp4">
+		</video>
+		<canvas id="galaxyCanvas"></canvas>
+
+		{# Section Contact avec le formulaire #}
+		<div class="contact-section">
+			<div class="contact-form">
+				<button class="close-contact">&times;</button>
+				{% include 'contact/form.html.twig' with {'form': form} %}
+			</div>
+		</div>
+
+		<div
+			class="planet-container"><!-- Les planètes sont générées par JavaScript -->
+		</div>
+
+		<div id="modal" class="modal">
+			<div>
+				<span class="close-button">&times;</span>
+				<h2 id="modal-title"></h2>
+				<p id="modal-description"></p>
+				<a href="#" id="expand-link"></a>
+			</div>
+		</div>
+	</main>
+
+	{% include 'partials/footer.html.twig' with {'siteInfo': siteInfo} %}
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('assets/js/script.js') }}"></script>
+{% endblock %}

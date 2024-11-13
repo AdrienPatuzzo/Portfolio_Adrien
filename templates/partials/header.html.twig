@@ -1,0 +1,38 @@
+<header>
+	<div class="header-section logo">
+		<a href="{{ path('app_home') }}"><img src="{{ asset('assets/images/Prototype_logo.png') }}" alt="{{ siteInfo.title }}"></a>
+	</div>
+	<div class="header-section search">
+		<div class="search-container">
+			<input type="text" placeholder="Recherche...">
+			<span class="search-icon">🔍</span>
+		</div>
+	</div>
+	<div class="header-section astronaut">
+		<a href="#">
+			<span class="icon">👨‍🚀</span>
+		</a>
+		<a href="#" class="auth-button">Sign Up/Login</a>
+	</div>
+	<div class="header-section">
+		<span class="">Fr</span>
+	</div>
+	<div class="header-section menu">
+		<div class="menu-icon" id="menu-toggle">
+			<div class="menu-bar"></div>
+			<div class="menu-bar"></div>
+			<div class="menu-bar"></div>
+		</div>
+		<div class="menu-content">
+			{% for item in menuItems %}
+				{% if item.route == '#contact' %}
+					<a href="#contact" class="contact-link">Contact</a>
+				{% else %}
+					<a href="{{ item.route }}" {% if item.external is defined and item.external %} target="_blank" {% endif %}>
+						{{ item.label }}
+					</a>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</header>

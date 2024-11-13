@@ -1,0 +1,31 @@
+<div class="contact-form-content">
+	<h2 class="form-title">Contactez-moi</h2>
+
+	{{ form_start(form, {'attr': {'class': 'contact-form-container'}}) }}
+	<div class="form-group">
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
+		{{ form_errors(form.name) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.email) }}
+		{{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'votre@email.com'}}) }}
+		{{ form_errors(form.email) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.subject) }}
+		{{ form_widget(form.subject, {'attr': {'class': 'form-control', 'placeholder': 'Sujet de votre message'}}) }}
+		{{ form_errors(form.subject) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.message) }}
+		{{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Votre message...', 'rows': 6}}) }}
+		{{ form_errors(form.message) }}
+	</div>
+
+	<button type="submit" class="submit-btn">Envoyer</button>
+	{{ form_end(form) }}
+</div>
