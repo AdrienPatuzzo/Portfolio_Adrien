@@ -17,8 +17,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Définir les permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && usermod -u 1000 www-data \
+RUN usermod -u 1000 www-data \
     && groupmod -g 1000 www-data
 
-USER www-data 
+# On reste en tant que root pour les commandes
+USER root
