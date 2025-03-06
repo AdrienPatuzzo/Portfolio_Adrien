@@ -1,0 +1,188 @@
+/* Styles pour le canvas de la galaxie */
+main {
+    flex: 1;
+    /* Permet au main de prendre tout l'espace vertical disponible */
+    position: relative;
+    /* Définit une position relative pour le positionnement des éléments enfants avec position absolue */
+    overflow: hidden;
+    /* Cache tout débordement pour éviter que le canvas dépasse */
+    max-width: 100vw;
+    /* Limite la largeur maximale à la largeur de la fenêtre pour éviter les débordements horizontaux */
+}
+
+#myVideo {
+    width: 100vw;
+    /* Définit la largeur de la vidéo à 100% de la largeur de la fenêtre */
+    height: 100vh;
+    /* Définit la hauteur de la vidéo à 100% de la hauteur de la fenêtre */
+    object-fit: cover;
+    /* Assure que la vidéo couvre tout le conteneur sans déformation */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /* Aligne la vidéo pour qu'elle remplisse entièrement le conteneur */
+    z-index: -1;
+    /* Positionne la vidéo derrière tous les autres éléments */
+}
+
+/* Styles pour l'élément canvas dans le main */
+#galaxyCanvas {
+    position: absolute;
+    /* Positionne le canvas absolument par rapport au conteneur parent */
+    top: 0;
+    left: 0;
+    /* Aligne le canvas avec le coin supérieur gauche du conteneur */
+    width: 100%;
+    /* Prend toute la largeur du conteneur parent */
+    height: 100%;
+    /* Prend toute la hauteur du conteneur parent */
+}
+
+@keyframes tournicoti {
+    100% {
+        background-position: 200% 0;
+    }
+
+    /* Animation pour déplacer la position de l'arrière-plan du canvas */
+}
+
+/* Styles pour les planètes */
+.planet {
+    position: fixed;
+    /* Positionne les planètes de manière fixe par rapport à la fenêtre */
+    border-radius: 50%;
+    /* Donne une forme circulaire aux planètes */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Ajoute une transition douce pour les transformations et les ombres */
+    cursor: pointer;
+    /* Change le curseur pour indiquer que l'élément est cliquable */
+    text-align: center;
+    /* Centre le texte horizontalement à l'intérieur de la planète */
+    line-height: 1.5;
+    /* Définit la hauteur de ligne pour centrer verticalement le texte */
+    font-size: 1.2em;
+    /* Taille du texte à l'intérieur des planètes */
+    font-weight: bold;
+    /* Met le texte en gras pour le rendre plus visible */
+    display: flex;
+    /* Utilise Flexbox pour aligner le contenu à l'intérieur des planètes */
+    align-items: center;
+    /* Centre verticalement le contenu de la planète */
+    justify-content: center;
+    /* Centre horizontalement le contenu de la planète */
+    color: #00ff00;
+    /* Définit la couleur du texte en vert fluo */
+    padding: 0.5em;
+    /* Ajoute un espacement interne pour améliorer l'apparence */
+    min-width: 70px;
+    /* Assure que la planète a une taille minimale pour que le texte soit lisible */
+    min-height: 70px;
+    /* Assure que la planète a une hauteur minimale pour que le texte soit lisible */
+    box-shadow: -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
+    /* Ajoute une ombre intérieure et extérieure pour donner de la profondeur */
+    animation: tournicoti 12s linear infinite;
+    /* Applique une animation de défilement continu */
+    filter: hue-rotate(28deg) drop-shadow(rgb(12, 2, 35) 0px 0px 4rem) drop-shadow(rgba(53, 112, 181, 0.357) -3rem -3rem 3rem);
+    /* Applique des filtres pour ajuster la couleur et ajouter des ombres */
+    clip-path: circle(380px);
+    /* Découpe les planètes en forme de cercle */
+    background-repeat: no-repeat;
+    /* Éviter la répétition de l'image */
+    background-position: center;
+    /* Centrer l'image dans le conteneur */
+    background-size: cover;
+    /* Assurer que l'image couvre entièrement le conteneur */
+}
+
+/* Animation au survol */
+.planet:hover {
+    transform: scale(1.1);
+    /* Agrandit légèrement la planète lors du survol pour attirer l'attention */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    /* Augmente l'ombre pour un effet lumineux plus intense */
+    filter: hue-rotate(28deg) drop-shadow(rgb(12, 2, 35) 0px 0px 4rem) drop-shadow(rgba(253, 242, 253, 0.357) -3rem -3rem 3rem);
+    /* Ajuste les filtres de couleur et d'ombre lors du survol */
+}
+
+/* Animation lors du clic sur une planète */
+.planet.selected {
+    transform: scale(1.5);
+    /* Agrandit significativement la planète sélectionnée pour indiquer son état actif */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    /* Intensifie l'ombre pour renforcer l'effet visuel */
+}
+
+/* Styles pour le conteneur des planètes */
+.planet-container {
+    /* position: flex; */
+    /* Positionne le conteneur par rapport à son parent */
+    width: 100%;
+    /* Occupe toute la largeur disponible */
+    height: 100%;
+    /* Occupe toute la hauteur disponible */
+    overflow: hidden;
+    /* Cache les planètes qui dépassent des limites du conteneur */
+}
+
+/* Styles pour la modale */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Positionne la modale de manière absolue par rapport à son conteneur */
+    background: #1a1a1a;
+    /* Utilise un fond sombre pour la modale */
+    border: 1px solid #00ff00;
+    /* Ajoute une bordure verte autour de la modale */
+    border-radius: 8px;
+    /* Arrondit les coins de la modale */
+    padding: 20px;
+    /* Ajoute un espacement interne pour aérer le contenu */
+    color: #00ff00;
+    /* Définit la couleur du texte en vert fluo */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    /* Ajoute une ombre pour donner de la profondeur à la modale */
+    width: 80%;
+    height: auto;
+    /* Ajuste la hauteur automatiquement */
+    max-height: 80vh;
+    /* Limite la hauteur maximale pour éviter le dépassement */
+    overflow: auto;
+    /* Ajoute un scroll si nécessaire */
+    z-index: 100;
+}
+
+.modal h2 {
+    margin-top: 0;
+    /* Supprime le margin-top pour aligner correctement le titre */
+}
+
+.modal .close-button {
+    cursor: pointer;
+    /* Indique que le bouton de fermeture est cliquable */
+    color: #00ff00;
+    /* Utilise une couleur verte pour le bouton de fermeture */
+    font-size: 24px;
+    /* Définit la taille de police du bouton de fermeture */
+    background: none;
+    /* Supprime tout fond du bouton */
+    border: none;
+    /* Supprime toute bordure du bouton */
+    position: absolute;
+    /* Positionne le bouton dans le coin supérieur droit de la modale */
+    top: 10px;
+    /* Place le bouton de fermeture à 10px du haut de la modale */
+    right: 10px;
+    /* Place le bouton de fermeture à 10px de la droite de la modale */
+}
+
+.modal #expand-link {
+    /* Cache le lien d'expansion par défaut */
+    color: #00ff00;
+    /* Utilise une couleur verte pour le lien d'expansion */
+    cursor: pointer;
+    /* Change le curseur pour indiquer que le lien est cliquable */
+    text-decoration: underline;
+}

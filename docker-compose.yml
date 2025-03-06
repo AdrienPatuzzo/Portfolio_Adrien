@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  php:
+    container_name: portfolio-adrien-php
+    build:
+      context: ./docker/php
+    volumes:
+      - .:/var/www/html
+    networks:
+      - portfolio-network
+
+  nginx:
+    container_name: portfolio-adrien-nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - portfolio-network
+
+  mailhog:
+    container_name: portfolio-adrien-mailhog
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025" # SMTP server
+      - "8025:8025" # Web interface
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}Portfolio Adrien
+			{% endblock %}
+		</title>
+
+		{# Chargement direct des styles #}
+		<link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/styleBody.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/styleFooter.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/styleHeader.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/styleMain.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/styleForm.css') }}">
+	</head>
+	<body>
+		{% block body %}{% endblock %}
+
+		{# Chargement direct du JavaScript #}
+		<script src="{{ asset('assets/js/script.js') }}"></script>
+		<script src="{{ asset('assets/js/form.js') }}"></script>
+	</body>
+</html>
